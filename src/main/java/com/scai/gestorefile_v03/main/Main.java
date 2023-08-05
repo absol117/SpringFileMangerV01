@@ -25,7 +25,8 @@ public class Main {
         Document document = new Document(1, "tag1", path);
         DocumentService documentService = new DocumentService(document);
         //System.out.println(documentService.delete(document));
-        System.out.println(documentService.addFile(4,"tag4", path));
+        System.out.println(documentService.deleteByPath(document.getFile().toPath()));
+        //System.out.println(documentService.addFile(4,"tag4", path));
 
       //  Path path2 = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/static/prova2.txt");
       //  System.out.println(documentService.move(document, path2));
