@@ -1,4 +1,4 @@
-package com.scai.gestorefile.gestorefile_w02;
+package com.lucam.fs.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
