@@ -28,7 +28,6 @@ public class MainTest {
     */
 
 
-
     @ParameterizedTest
     @MethodSource("addFileParameters")
     public void addFileTest(int id, String tag, Path path) {
@@ -36,6 +35,7 @@ public class MainTest {
         assertTrue(document.getFile().exists());
 
     }
+
     public static Stream<Arguments> addFileParameters() {
         Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
         return Stream.of(Arguments.of(1,"tag1",path));
@@ -50,6 +50,17 @@ public class MainTest {
 
         Document document = documentService.addFile(id,tag,path);
         assertTrue(document.getFile().exists());
+        System.out.println(document.getPath());
+    }
+
+
+
+
+    @Test
+    public void addFileMkdirTest() {
+        Path folderPath = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database");
+        String nameFile = "prova04.txt";
+        assertTrue(documentService.addFileMkdir(folderPath,nameFile));
     }
 
 

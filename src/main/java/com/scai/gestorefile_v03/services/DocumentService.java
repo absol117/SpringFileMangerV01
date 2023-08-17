@@ -71,6 +71,24 @@ public class DocumentService {
         return null;
     }
 
+
+
+    public boolean addFileMkdir(Path folderPath, String fileName) {
+        File dir = new File(folderPath.toUri());
+        if(!dir.exists()) {
+            dir.mkdir();
+        }
+        File file = new File(dir, fileName);
+        try {
+            if(file.createNewFile()) {
+                return true;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
     public boolean deleteByPath(Path path) {
         File file = new File(path.toUri());
         if (file.exists()) {
