@@ -59,8 +59,12 @@ public class DocumentService {
             if(file.createNewFile()) {
                 Document document1 = new Document(id, tag, path);
                 document1.setFile(file);
+                System.out.println("File creato con successo: " + file.getAbsolutePath());
                 return document1;
+            } else {
+                System.out.println("Il file esiste già e verrà sovrascritto: " + file.getAbsolutePath());
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -43,6 +42,16 @@ public class MainTest {
 
     }
 
+    @Test
+    public void addFileTest2() {
+        int id = 1;
+        String tag = "tag1";
+        Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
+
+        Document document = documentService.addFile(id,tag,path);
+        assertTrue(document.getFile().exists());
+    }
+
 
 
 
@@ -56,6 +65,20 @@ public class MainTest {
         Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
         return Stream.of(Arguments.of(path));
     }
+
+    @Test
+    public void deleteByPathTest2() {
+        Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
+        documentService.deleteByPath(path);
+        assertTrue(documentService.deleteByPath(path));
+    }
+
+
+
+
+
+
+
     @ParameterizedTest
     @MethodSource("deleteParameters")
     public void deleteTest(Document document) {
@@ -66,6 +89,17 @@ public class MainTest {
     public static Stream<Arguments> deleteParameters() {
         Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
         return Stream.of(Arguments.of(new Document(1,"tag1", path)));
+    }
+
+
+    @Test
+    public void deleteTest2() {
+        Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
+        int id = 2;
+        String tag = "tag2";
+        Document document = new Document(id,tag,path);
+        documentService.delete(document);
+        assertTrue(documentService.delete(document));
     }
 
 
@@ -83,6 +117,17 @@ public class MainTest {
         Path pathDestination = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/databaseMove/provaMove02.txt");
         return Stream.of(Arguments.of(new Document(2, "tag2", pathSource), pathDestination));
 
+    }
+
+    @Test
+    public void moveTest2() {
+        Path pathSource = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
+        int id = 2;
+        String tag = "tag2";
+        Document document = new Document(id,tag,pathSource);
+        Path pathDestination = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/databaseMove/provaMove02.txt");
+
+        assertTrue(documentService.move(document, pathDestination));
     }
 
 
