@@ -69,7 +69,6 @@ public class MainTest {
     @ParameterizedTest
     @MethodSource("deleteByPathParameters")
     public void deleteByPathTest(Path path) {
-        documentService.deleteByPath(path);
         assertTrue(documentService.deleteByPath(path));
     }
     public static Stream<Arguments> deleteByPathParameters() {
@@ -80,7 +79,6 @@ public class MainTest {
     @Test
     public void deleteByPathTest2() {
         Path path = Path.of("C:/Users/lucam/OneDrive/Desktop/GestoreFile/GestoreFile_V03/src/main/resources/database/prova02.txt");
-        documentService.deleteByPath(path);
         assertTrue(documentService.deleteByPath(path));
     }
 
@@ -93,7 +91,6 @@ public class MainTest {
     @ParameterizedTest
     @MethodSource("deleteParameters")
     public void deleteTest(Document document) {
-        documentService.delete(document);
         assertTrue(documentService.delete(document));
 
     }
@@ -109,7 +106,6 @@ public class MainTest {
         int id = 2;
         String tag = "tag2";
         Document document = new Document(id,tag,path);
-        documentService.delete(document);
         assertTrue(documentService.delete(document));
     }
 
@@ -119,7 +115,6 @@ public class MainTest {
     @ParameterizedTest
     @MethodSource("moveParameters")
     public void moveTest(Document doc, Path path) {
-        documentService.move(doc, path);
         assertTrue(documentService.move(doc, path));
     }
 
